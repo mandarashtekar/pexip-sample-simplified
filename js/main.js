@@ -29,7 +29,6 @@ window.onload = function () {
 const videoElement = document.querySelector('video');
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-const selfvideo = document.getElementById('selfvideo');
 
 const blurBtn = document.getElementById('blur-btn');
 const unblurBtn = document.getElementById('unblur-btn');
@@ -103,8 +102,7 @@ function changeAudioDestination() {
 
 function gotStream(stream) {
   window.stream = stream; // make stream available to console
-  // videoElement.srcObject = stream;
-  selfvideo.srcObject = stream;
+  videoElement.srcObject = stream;
   // Refresh button list in case labels have become available
   return navigator.mediaDevices.enumerateDevices();
 }
@@ -142,11 +140,11 @@ videoSelect.onchange = start;
 start();
 
 
-selfvideo.onplaying = () => {
+videoElement.onplaying = () => {
 	console.log("videoElement playing");
 
-	canvas.height = selfvideo.videoHeight;
-	canvas.width = selfvideo.videoWidth;
+	canvas.height = videoElement.videoHeight;
+	canvas.width = videoElement.videoWidth;
 };
 
 /*  function startVideoStream() {
