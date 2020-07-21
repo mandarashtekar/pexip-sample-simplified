@@ -27,6 +27,8 @@ window.onload = function () {
 }
 
 const videoElement = document.querySelector('video');
+const localVideo = document.querySelector('selfvideo');
+// const remoteVideo = document.querySelector('video');
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
