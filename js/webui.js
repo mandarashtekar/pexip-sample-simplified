@@ -395,9 +395,9 @@ function doneSetup(url, pin_status, conference_extension) {
         }
     }
 
-    blurBtn.hidden = true;
+    /*blurBtn.hidden = true;
     localVideo.hidden = true;
-    canvas.hidden = false;
+    canvas.hidden = false;*/
 
     canvas.height = localVideo.videoHeight;
     canvas.width = localVideo.videoWidth;
