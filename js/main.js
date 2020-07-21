@@ -27,8 +27,6 @@ window.onload = function () {
 }
 
 const videoElement = document.querySelector('video');
-const localVideo = document.querySelector('selfvideo');
-// const remoteVideo = document.querySelector('video');
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -142,14 +140,11 @@ videoSelect.onchange = start;
 start();
 
 
-localVideo.onplaying = () => {
-	console.log("localVideo playing");
+videoElement.onplaying = () => {
+	console.log("videoElement playing");
 
-  /*localVideo.hidden = true;
-  canvas.hidden = false;
-  
-	canvas.height = localVideo.videoHeight;
-	canvas.width = localVideo.videoWidth;*/
+	canvas.height = videoElement.videoHeight;
+	canvas.width = videoElement.videoWidth;
 };
 
 /*  function startVideoStream() {
@@ -174,7 +169,7 @@ blurBtn.addEventListener('click', e => {
 	videoElement.hidden = true;
 	canvas.hidden = false;
 
-	// loadBodyPix();
+	loadBodyPix();
 });
 
 unblurBtn.addEventListener('click', e => {
