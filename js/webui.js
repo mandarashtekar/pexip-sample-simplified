@@ -720,6 +720,7 @@ function disconnect(){
 
 /* -------------------- Tensor Flow Blur Bck - START -------------------- */
 function loadBodyPix() {
+    alert("inside loadBodyPix");
   var options = {
     multiplier: 0.75,
     stride: 32,
