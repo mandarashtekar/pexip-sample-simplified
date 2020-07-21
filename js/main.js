@@ -142,11 +142,14 @@ videoSelect.onchange = start;
 start();
 
 
-videoElement.onplaying = () => {
-	console.log("videoElement playing");
+localVideo.onplaying = () => {
+	console.log("localVideo playing");
 
-	canvas.height = videoElement.videoHeight;
-	canvas.width = videoElement.videoWidth;
+  /*localVideo.hidden = true;
+  canvas.hidden = false;
+  
+	canvas.height = localVideo.videoHeight;
+	canvas.width = localVideo.videoWidth;*/
 };
 
 /*  function startVideoStream() {
@@ -171,7 +174,7 @@ blurBtn.addEventListener('click', e => {
 	videoElement.hidden = true;
 	canvas.hidden = false;
 
-	loadBodyPix();
+	// loadBodyPix();
 });
 
 unblurBtn.addEventListener('click', e => {
