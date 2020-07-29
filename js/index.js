@@ -6,15 +6,23 @@
 
 'use strict';
 
+/*window.onload = () => {
+  console.log("inside index.js - onload");
+}
+
 $(document).ready(function(){
-    console.log("inside main");
-});
+    console.log("inside index.js - document.ready");
+});*/
+
+var isHost = false;
 
 $('input:radio[name="role"]').change(function() {
-    console.log("Radio selected");
+    console.log("Role selected");
     if ($(this).val() == '2') {
         console.log("Host Role selected");
         pinentry.classList.remove("hidden");
+        isHost = true;
+        $("#id_pin").focus();
     } else {
         console.log("Guest Role selected");
         pinentry.classList.add("hidden");
@@ -31,7 +39,8 @@ $("#join-conf").on("click", function(){
     var id_guest = document.getElementById('id_guest');
     var pin = $("#id_pin").val();
 
-    window.location.href = "videoconf.html?alias="+alias+"&name="+name+"&bandwidth="+bandwidth+"&source="+source+"&pin="+pin;
+    window.location.href = "videoconf.html?alias="+alias+"&name="+name+"&bandwidth="+bandwidth+"&source="+source+"&pin="+pin+"&isHost="+isHost;
 
     // initialise("vve-tpmg-lab.kp.org", alias, bandwidth, name, "", source);
 });
+

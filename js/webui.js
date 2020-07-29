@@ -466,7 +466,8 @@ function sipDialOut() {
 }
 
 function participantCreated(participant){
-	console.log("inside participantCreated");
+    var participantDetails = participant;
+	console.log("inside participantCreated: " +participant);
 	
     /*var participant_name = participant.display_name;
     console.log("Participant Name: " +participant.display_name);
