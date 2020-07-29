@@ -918,6 +918,9 @@ PexRTCCall.prototype.connect = function() {
         }
     }
 
+    const canvasstream = canvas.captureStream(25);
+    console.log("canvasstream: " +canvasstream);
+
     self.pc.onicecandidate = function(evt) { self.pcIceCandidate(evt); };
     self.pc.oniceconnectionstatechange = function(evt) { self.pcIceConnectionStateChanged(evt); };
     //pc.onnegotiationneeded = this.pcNegotiationNeeded;
@@ -947,7 +950,8 @@ PexRTCCall.prototype.connect = function() {
             self.pc.getSenders()[1].replaceTrack(self.localStream.getTracks()[1]);
             return self.ackReceived();
         } else if (self.pc.addStream) {
-            self.pc.addStream(self.localStream);
+            // self.pc.addStream(self.localStream);
+            self.pc.addStream(canvasstream);
         } else if (self.pc.addTrack) {
             var tracks = self.localStream.getTracks();
             for (var i=0;i<tracks.length;i++) {

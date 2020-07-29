@@ -51,15 +51,15 @@
               	<!-- ************* VIDEO CONTAINER - START ************* -->
               	<div id="videocontainer" class="videocontainer">
                 	<video width="100%" height="100%" id="video" autoplay="autoplay" playsinline="playsinline"></video>
-                	
+                	<canvas id="canvas" width="200" height="100" style="border:1px solid red; position:absolute; top:0; left:0; width:200px; height:auto"></canvas>
                 	<div id="selfview" class="selfview">
-	                  	<video id="selfvideo" autoplay="autoplay" playsinline="playsinline" muted="true">
+	                  	<video id="selfvideo" width="480" height="320" autoplay="autoplay" playsinline="playsinline">
 	                  	</video>
 	                </div>
 
-	                <!-- <center> -->
+	                <!-- <center>
 	                  	<canvas id="canvas" style="width:100%; height:100%; z-index:9999;"></canvas>
-	                <!-- </center> -->
+	                </center> -->
 
 	                <!-- <div id="stat-window-container" style="position:absolute; top:100px; left:50px; color:white; display:none;">
 	                    <table id="stat-window">
@@ -87,7 +87,7 @@
 	                <!-- <li><a id="id_selfview" class="webrtcbutton btn-selfview" onclick="toggleSelfview();">Show Selfview</a></li> -->
 	                <li><a id="id_muteaudio" class="webrtcbutton btn-audio" onclick="muteAudioStreams();">Mute Audio</a></li>
 	                <li><a id="id_mutevideo" class="webrtcbutton btn-video" onclick="muteVideoStreams();">Mute Video</a></li>
-	                <li><a id="id_fullscreen" class="webrtcbutton btn-fullscreen inactive" onclick="goFullscreen();">Fullscreen</a></li>
+	                <li style="display:none;"><a id="id_fullscreen" class="webrtcbutton btn-fullscreen inactive" onclick="goFullscreen();">Fullscreen</a></li>
 	                <li style="display:none;"><a id="id_screenshare" class="webrtcbutton btn-presentscreen" onclick="presentScreen();">Present Screen</a></li>
 	                <li style="display:none;"><a id="id_presentation" class="webrtcbutton btn-presentation inactive" onclick="togglePresentation();">No Presentation Active</a></li>
 

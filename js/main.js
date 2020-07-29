@@ -14,12 +14,14 @@ window.onload = function () {
     var bandwidth = data.bandwidth;
     var source = data.source;
     var pin = data.pin;
+    var isHost = data.isHost;
 
     console.log("Alias:" +alias);
     console.log("Name:" +name);
     console.log("Bandwidth:" +bandwidth);
     console.log("Source:" +source);
     console.log("Pin:" +pin);
+    console.log("isHost:" +isHost);
 
     initialise("vve-tpmg-lab.kp.org", alias, bandwidth, name, "", source);
     // initialise("ttgpexip.ttgtpmg.net", alias, bandwidth, name, "", source);
@@ -102,7 +104,7 @@ function changeAudioDestination() {
 
 function gotStream(stream) {
   window.stream = stream; // make stream available to console
-  videoElement.srcObject = stream;
+  selfvideo.srcObject = stream;
   // Refresh button list in case labels have become available
   return navigator.mediaDevices.enumerateDevices();
 }
@@ -140,11 +142,11 @@ videoSelect.onchange = start;
 start();
 
 
-videoElement.onplaying = () => {
+selfvideo.onplaying = () => {
 	console.log("videoElement playing");
 
-	canvas.height = videoElement.videoHeight;
-	canvas.width = videoElement.videoWidth;
+  canvas.height = selfvideo.videoHeight;
+  canvas.width = selfvideo.videoWidth;
 };
 
 /*  function startVideoStream() {
@@ -161,12 +163,19 @@ navigator.mediaDevices.getUserMedia({video: true, audio: false})
   });
 }*/
 
+function stopVideoStream() {
+  const stream = videoElement.srcObject;
+
+  stream.getTracks().forEach(track => track.stop());
+  videoElement.srcObject = null;
+}
+
 blurBtn.addEventListener('click', e => {
 	console.log("Blur button clicked");
 	blurBtn.hidden = true;
 	unblurBtn.hidden = false;
 
-	videoElement.hidden = true;
+	selfvideo.hidden = true;
 	canvas.hidden = false;
 
 	loadBodyPix();
@@ -177,11 +186,15 @@ unblurBtn.addEventListener('click', e => {
 	blurBtn.hidden = false;
 	unblurBtn.hidden = true;
 
-	videoElement.hidden = false;
+	selfvideo.hidden = false;
 	canvas.hidden = true;
+
+  // stopVideoStream();
 });
 
 function loadBodyPix() {
+  console.log("main - loadBodyPix");
+
 	var options = {
 	  multiplier: 0.75,
 	  stride: 32,
@@ -194,14 +207,14 @@ function loadBodyPix() {
 
 async function perform(net) {
 	while (blurBtn.hidden) {
-	  const segmentation = await net.segmentPerson(video);
+	  const segmentation = await net.segmentPerson(selfvideo);
 
 	  const backgroundBlurAmount = 6;
 	  const edgeBlurAmount = 2;
 	  const flipHorizontal = true;
 
 	  bodyPix.drawBokehEffect(
-	    canvas, videoElement, segmentation, backgroundBlurAmount,
+	    canvas, selfvideo, segmentation, backgroundBlurAmount,
 	    edgeBlurAmount, flipHorizontal);
 	}
 }
