@@ -545,7 +545,7 @@ function participantDeleted(participant){
 
 function layoutUpdate(view){
     console.log("inside layoutUpdate - view: " +view.view);
-
+    
     switch(view.view){
         case "1:7":
             console.log("Layout 1:7");
@@ -559,6 +559,9 @@ function layoutUpdate(view){
         case "1:0":
             console.log("Layout 1:0");
             break;
+        case "4:0":
+            console.log("Layout 4:0");
+            break;            
         default:
             console.log("default case - cannot get view");
             break;
