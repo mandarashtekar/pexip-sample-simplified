@@ -561,12 +561,38 @@ function layoutUpdate(view){
             break;
         case "4:0":
             console.log("Layout 4:0");
+            // rtc.transformLayout({layout: "2:21", streaming_indicator: true, enable_overlay_text:true});
+            // rtc.transformLayout({"layout": "4:0"});
             break;            
         default:
             console.log("default case - cannot get view");
             break;
     }
 }
+// {view: "1:7", participants: ["a0196175-b462-48a1-b95c-f322c3af57c1", "65b4af2f-657a-4081-98a8-b17667628ce3”]};
+
+/*function adjustLayout(participants, isHostAvail){
+    var totalPartcicipants = participants.length;
+    var view = "";
+    if(isHostAvail){
+        if(totalPartcicipants == 2){
+            view = "1:0";
+            console.log("adjustLayout - view:" +view);
+        } else if(totalPartcicipants > 2){
+            view = "1:7";
+            console.log("adjustLayout - view:" +view);
+        }
+    } else {
+        if(totalPartcicipants > 1){
+          view = "4:0";
+        } else {
+            view = "1:0";
+        }
+    }
+    if(currentLayout != view){
+        rtc.transformLayout({"layout": view});
+    }
+}*/
 
 function getMediaStats(){
     console.log("inside getMediaStats");
